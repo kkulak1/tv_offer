@@ -73,3 +73,42 @@ void Tv::set_price(int new_price)
 // {
 //     canals = new_canals;
 // }
+
+bool Tv::check_in_canals(string canal)
+{
+    bool result = false;
+    for (int i = 1; i <= canals.size(); i++)
+    {
+        if (canals[i] == canal)
+            result = true;
+    }
+    return result;
+}
+
+void Tv::add_canal(string new_canal)
+{
+    canals.push_back(new_canal);
+}
+
+void Tv::modify_elemnt(string canal, string new_canal)
+{
+    for (int i = 1; i <= canals.size(); i++)
+    {
+        if (canals[i] == canal)
+            canals[i] = new_canal;
+    }
+}
+
+void Tv::remove_canal(string canal)
+{
+    for (int i = 0; i <= canals.size(); i++)
+    {
+        if (canals[i] == canal)
+            canals.erase(canals.begin() + i);
+    }
+}
+
+int Tv::count_canals()
+{
+    return canals.size();
+}

@@ -29,4 +29,10 @@ public:
     void set_end_date(Date new_end_date);
     void set_price(int new_price);
     void set_canals(vector<string> canals);
+
+    bool check_in_canals(string canal);
+    void add_canal(string canal);
+    void modify_elemnt(string canal, string new_canal);
+    void remove_canal(string canal);
+    int count_canals();
 };
