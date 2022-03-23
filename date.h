@@ -1,9 +1,11 @@
 // Kamil Kulak
 
+#ifndef __DEFINICJE_HPP__
+#define __DEFINICJE_HPP__
+
 #include <iostream>
 
 using namespace std;
-
 class Date
 {
     int day, month, year;
@@ -24,7 +26,7 @@ class Date
     };
 
 public:
-    Date(int d, int m, int r);
+    Date(int d = 1, int m = 1, int r = 2000);
 
     void show();
 
@@ -38,3 +40,5 @@ public:
 
     void check(int day, int month, int year);
 };
+
+#endif
