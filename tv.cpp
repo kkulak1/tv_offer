@@ -76,13 +76,15 @@ void Tv::set_price(int new_price)
 
 bool Tv::check_in_canals(string canal)
 {
-    bool result = false;
-    for (int i = 1; i <= canals.size(); i++)
+    // bool result = false;
+    int size;
+    size = canals.size();
+    for (int i = 0; i <= size; i++)
     {
         if (canals[i] == canal)
-            result = true;
+            return true;
     }
-    return result;
+    return false;
 }
 
 void Tv::add_canal(string new_canal)
@@ -92,7 +94,9 @@ void Tv::add_canal(string new_canal)
 
 void Tv::modify_elemnt(string canal, string new_canal)
 {
-    for (int i = 1; i <= canals.size(); i++)
+    int size;
+    size = canals.size();
+    for (int i = 1; i <= size; i++)
     {
         if (canals[i] == canal)
             canals[i] = new_canal;
@@ -101,7 +105,9 @@ void Tv::modify_elemnt(string canal, string new_canal)
 
 void Tv::remove_canal(string canal)
 {
-    for (int i = 0; i <= canals.size(); i++)
+    int size;
+    size = canals.size();
+    for (int i = 0; i <= size; i++)
     {
         if (canals[i] == canal)
             canals.erase(canals.begin() + i);
