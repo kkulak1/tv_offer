@@ -83,4 +83,57 @@ TEST_CASE("tv simple tests", "[tv]")
         CHECK(offer.get_end_date().get_month() == 2);
         CHECK(offer.get_end_date().get_year() == 2012);
     }
+    SECTION("test methods", "[tv]")
+    {
+        CHECK(offer.check_in_canals("canal1") == true);
+        CHECK(offer.check_in_canals("canal2") == true);
+        CHECK(offer.check_in_canals("canalalaal") == false);
+
+        CHECK(offer.count_canals() == 3);
+
+        offer.add_canal("canal4");
+
+        CHECK(offer.count_canals() == 4);
+        CHECK(offer.check_in_canals("canal4") == true);
+
+        offer.modify_elemnt("canal4", "canal10");
+
+        CHECK(offer.check_in_canals("canal10") == true);
+        CHECK(offer.check_in_canals("canal4") == false);
+
+        offer.remove_canal("canal2");
+
+        CHECK(offer.check_in_canals("canal2") == false);
+
+        offer.add_canal("canal2");
+
+        CHECK(offer.count_canals() == 4);
+
+        offer.remove_canal("canal10");
+
+        CHECK(offer.count_canals() == 3);
+        CHECK(offer.check_in_canals("canal1") == true);
+
+        offer.modify_elemnt("canal2", "canal8");
+
+        CHECK(offer.count_canals() == 3);
+        CHECK(offer.check_in_canals("canal8") == true);
+
+        offer.add_canal("canal9");
+
+        CHECK(offer.count_canals() == 4);
+
+        offer.remove_canal("canal1");
+
+        CHECK(offer.check_in_canals("canal1") == false);
+
+        offer.add_canal("canal1");
+
+        CHECK(offer.check_in_canals("canal1") == true);
+
+        offer.modify_elemnt("canal1", "canal20");
+
+        CHECK(offer.check_in_canals("canal1") == false);
+        CHECK(offer.check_in_canals("canal20") == true);
+    }
 }

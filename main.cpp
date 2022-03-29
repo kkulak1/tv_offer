@@ -7,34 +7,10 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    // Date start_date(1, 1, 2000);
-    // start_date.show();
-    // Date end_date(1, 1, 2010);
 
-    // vector<string> canals;
-    // canals.push_back("kanal 1");
-    // canals.push_back("kanal 2");
-
-    // Tv tv("offer", 1, start_date, end_date, 10000, canals);
-
-    // cout << tv.get_name() << endl;
-    // cout << tv.get_time() << endl;
-    // cout << tv.get_price() << endl;
-    // int size;
-    // size = canals.size();
-    // cout << size;
-    // cout << tv.count_canals() << endl;
-    // cout << tv.check_in_canals("kanal 1") << endl;
-    // tv.remove_canal("kanal 1");
-    // cout << tv.count_canals() << endl;
-    // // for (int i; i <= size; i++)
-    // // {
-    // //     cout << canals[i] << endl;
-    // // }
-
-    if (argc != 10)
+    if (argc < 10)
     {
-        cerr << "Incorrect number of command line arguments - expected 10, got " << argc << endl;
+        cerr << "Incorrect number of command line arguments - the minimum is 10, got " << argc << endl;
     }
 
     string name;
@@ -81,11 +57,77 @@ int main(int argc, char *argv[])
     stream >> price;
     stream.clear();
 
+    if (argc > 10)
+    {
+        for (int i = 1; i < (argc - 9); i++)
+        {
+            stringstream ss;
+            ss.str(argv[9 + i]);
+            canals.push_back(ss.str());
+            ss.clear();
+        }
+    }
+
     Date start_date(sday, smonth, syear);
     Date end_date(eday, emonth, eyear);
 
     Tv offer(name, time, start_date, end_date, price, canals);
 
-    cout << offer.get_name() << endl;
-    cout << offer.get_time() << endl;
+    cout << "Name: " << offer.get_name() << endl;
+    cout << "Time (years): " << offer.get_time() << endl;
+    cout << "Start date: " << offer.get_start_date().get_day() << "." << offer.get_start_date().get_month() << "." << offer.get_start_date().get_year() << endl;
+    cout << "End date: " << offer.get_end_date().get_day() << "." << offer.get_end_date().get_month() << "." << offer.get_end_date().get_year() << endl;
+    cout << "Price: " << offer.get_price() << endl;
+
+    // cout << canals.size();
+
+    // vector<int> test;
+    // test.push_back(1);
+    // test.push_back(2);
+
+    // cout << test.size();
+
+    int size = canals.size();
+
+    if (canals.size() > 0)
+    {
+        cout << "Canals: " << endl;
+        for (int i = 0; i < size; i++)
+        {
+            cout << canals[i] << endl;
+        }
+    }
+
+    return 0;
 }
+
+// int main()
+// {
+//     Date start_date(1, 1, 2000);
+//     start_date.show();
+//     Date end_date(1, 1, 2010);
+
+//     vector<string> canals;
+//     canals.push_back("kanal 1");
+//     canals.push_back("kanal 2");
+
+//     Tv tv("offer", 1, start_date, end_date, 10000, canals);
+
+//     cout << tv.get_name() << endl;
+//     cout << tv.get_time() << endl;
+//     cout << tv.get_price() << endl;
+//     int size;
+//     size = canals.size();
+//     cout << size;
+//     cout << tv.count_canals() << endl;
+//     cout << tv.check_in_canals("kanal 1") << endl;
+//     tv.remove_canal("kanal 1");
+//     cout << tv.count_canals() << endl;
+//     // for (int i; i <= size; i++)
+//     // {
+//     //     cout << canals[i] << endl;
+//     // }
+//     // tv.add_canal("aaa");
+
+//     tv.add_canal("aaa");
+// }

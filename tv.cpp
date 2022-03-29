@@ -79,7 +79,7 @@ bool Tv::check_in_canals(string canal)
     // bool result = false;
     int size;
     size = canals.size();
-    for (int i = 0; i <= size; i++)
+    for (int i = 0; i < size; i++)
     {
         if (canals[i] == canal)
             return true;
@@ -89,32 +89,62 @@ bool Tv::check_in_canals(string canal)
 
 void Tv::add_canal(string new_canal)
 {
-    canals.push_back(new_canal);
+    int size = canals.size();
+    int check = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (canals[i] == new_canal)
+        {
+            check++;
+        }
+    }
+    if (check > 0)
+        throw invalid_argument("This canal is already there!");
+    else
+        canals.push_back(new_canal);
 }
 
-void Tv::modify_elemnt(string canal, string new_canal)
+void Tv::modify_elemnt(string canal_to_modify, string new_canal)
 {
-    int size;
+    int size, x = 0;
     size = canals.size();
-    for (int i = 1; i <= size; i++)
+    for (int i = 1; i < size; i++)
     {
-        if (canals[i] == canal)
-            canals[i] = new_canal;
+        if (canals[i] == canal_to_modify)
+        {
+            x = i;
+        }
+    }
+    if (x == 0)
+    {
+        throw invalid_argument("There is no such element in collection to modify it!");
+    }
+    else
+    {
+        canals[x] = new_canal;
     }
 }
 
 void Tv::remove_canal(string canal)
 {
-    int size;
+    int size, x = 0;
     size = canals.size();
-    for (int i = 0; i <= size; i++)
+    for (int i = 0; i < size; i++)
     {
         if (canals[i] == canal)
+        {
             canals.erase(canals.begin() + i);
+            x = 1;
+        }
+    }
+    if (x == 0)
+    {
+        throw invalid_argument("There is no such element in collection to remove it!");
     }
 }
 
 int Tv::count_canals()
 {
-    return canals.size();
+    int size = canals.size();
+    return size;
 }
