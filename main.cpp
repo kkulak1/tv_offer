@@ -17,8 +17,6 @@ int main(int argc, char *argv[])
     int time = 1, price = 1000, sday = 1, smonth = 1, syear = 2000, eday = 1, emonth = 1, eyear = 2001;
     vector<string> canals;
 
-    // cin >> name, time, sday, smonth, syear, eday, emonth, eyear, price, canals;
-
     stringstream stream;
 
     stream << argv[1];
@@ -79,14 +77,6 @@ int main(int argc, char *argv[])
     cout << "End date: " << offer.get_end_date().get_day() << "." << offer.get_end_date().get_month() << "." << offer.get_end_date().get_year() << endl;
     cout << "Price: " << offer.get_price() << endl;
 
-    // cout << canals.size();
-
-    // vector<int> test;
-    // test.push_back(1);
-    // test.push_back(2);
-
-    // cout << test.size();
-
     int size = canals.size();
 
     if (canals.size() > 0)
@@ -100,34 +90,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-// int main()
-// {
-//     Date start_date(1, 1, 2000);
-//     start_date.show();
-//     Date end_date(1, 1, 2010);
-
-//     vector<string> canals;
-//     canals.push_back("kanal 1");
-//     canals.push_back("kanal 2");
-
-//     Tv tv("offer", 1, start_date, end_date, 10000, canals);
-
-//     cout << tv.get_name() << endl;
-//     cout << tv.get_time() << endl;
-//     cout << tv.get_price() << endl;
-//     int size;
-//     size = canals.size();
-//     cout << size;
-//     cout << tv.count_canals() << endl;
-//     cout << tv.check_in_canals("kanal 1") << endl;
-//     tv.remove_canal("kanal 1");
-//     cout << tv.count_canals() << endl;
-//     // for (int i; i <= size; i++)
-//     // {
-//     //     cout << canals[i] << endl;
-//     // }
-//     // tv.add_canal("aaa");
-
-//     tv.add_canal("aaa");
-// }

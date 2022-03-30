@@ -1,8 +1,7 @@
-// #include <iostream>
-// #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "../date.h"
 #include "../tv.h"
+#include <stdexcept>
 
 TEST_CASE("date simple tests", "[date]")
 {
@@ -34,6 +33,22 @@ TEST_CASE("date simple tests", "[date]")
         CHECK(date.get_day() == 10);
         CHECK(date.get_month() == 9);
         CHECK(date.get_year() == 2001);
+    }
+
+    SECTION("test errors")
+    {
+        CHECK_THROWS(date.set_day(200));
+        CHECK_THROWS(date.set_day(0));
+        CHECK_THROWS(date.set_day(-1));
+        CHECK_THROWS(date.set_month(200));
+        CHECK_THROWS(date.set_month(0));
+        CHECK_THROWS(date.set_month(-1));
+        CHECK_THROWS(date.set_year(0));
+
+        date.set_month(2);
+        date.set_year(2001);
+
+        CHECK_THROWS(date.set_day(29));
     }
 }
 
@@ -135,5 +150,28 @@ TEST_CASE("tv simple tests", "[tv]")
 
         CHECK(offer.check_in_canals("canal1") == false);
         CHECK(offer.check_in_canals("canal20") == true);
+    }
+
+    SECTION("test errors", "[tv]")
+    {
+        CHECK(offer.check_in_canals("canal2") == true);
+        CHECK(offer.check_in_canals("canal1") == true);
+
+        CHECK_THROWS(offer.add_canal("canal1"));
+        CHECK_THROWS(offer.add_canal("canal2"));
+
+        CHECK(offer.check_in_canals("canal4") == false);
+        CHECK(offer.check_in_canals("canal5") == false);
+
+        CHECK_THROWS(offer.modify_elemnt("canal4", "canal8"));
+        CHECK_THROWS(offer.modify_elemnt("canal5", "canal9"));
+
+        CHECK(offer.check_in_canals("canal2") == true);
+
+        CHECK(offer.check_in_canals("canal5") == false);
+        CHECK(offer.check_in_canals("canal6") == false);
+
+        CHECK_THROWS(offer.remove_canal("canal5"));
+        CHECK_THROWS(offer.remove_canal("canal6"));
     }
 }

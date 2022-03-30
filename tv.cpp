@@ -39,11 +39,6 @@ int Tv::get_price()
     return price;
 }
 
-// vector<string> Tv::get_canals()
-// {
-//     return canals;
-// }
-
 void Tv::set_name(string new_name)
 {
     name = new_name;
@@ -68,11 +63,6 @@ void Tv::set_price(int new_price)
 {
     price = new_price;
 }
-
-// void Tv::set_canals(vector<string> new_canals)
-// {
-//     canals = new_canals;
-// }
 
 bool Tv::check_in_canals(string canal)
 {
@@ -106,7 +96,7 @@ void Tv::add_canal(string new_canal)
 
 void Tv::modify_elemnt(string canal_to_modify, string new_canal)
 {
-    int size, x = 0;
+    int size, x = -1;
     size = canals.size();
     for (int i = 1; i < size; i++)
     {
@@ -115,7 +105,7 @@ void Tv::modify_elemnt(string canal_to_modify, string new_canal)
             x = i;
         }
     }
-    if (x == 0)
+    if (x == -1)
     {
         throw invalid_argument("There is no such element in collection to modify it!");
     }
@@ -145,6 +135,5 @@ void Tv::remove_canal(string canal)
 
 int Tv::count_canals()
 {
-    int size = canals.size();
-    return size;
+    return canals.size();
 }
