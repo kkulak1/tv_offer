@@ -97,6 +97,12 @@ TEST_CASE("tv simple tests", "[tv]")
         CHECK(offer.get_end_date().get_day() == 2);
         CHECK(offer.get_end_date().get_month() == 2);
         CHECK(offer.get_end_date().get_year() == 2012);
+
+        CHECK_THROWS(offer.set_time(-2));
+        CHECK_THROWS(offer.set_time(0));
+
+        CHECK_THROWS(offer.set_price(0));
+        CHECK_THROWS(offer.set_price(-100));
     }
     SECTION("test methods", "[tv]")
     {

@@ -6,11 +6,15 @@ using namespace std;
 
 Tv::Tv(string n, int t, Date sd, Date ed, int p, vector<string> c)
 {
-    name = n;
-    time = t;
+    // name = n;
+    // time = t;
     start_date = sd;
     end_date = ed;
-    price = p;
+    // price = p;
+    // canals = c;
+    set_name(n);
+    set_time(t);
+    set_price(p);
     canals = c;
 }
 
@@ -46,7 +50,14 @@ void Tv::set_name(string new_name)
 
 void Tv::set_time(int new_time)
 {
-    time = new_time;
+    if (new_time <= 0)
+    {
+        throw invalid_argument("Time has to be positive!");
+    }
+    else
+    {
+        time = new_time;
+    }
 }
 
 void Tv::set_start_date(Date new_start_date)
@@ -61,7 +72,14 @@ void Tv::set_end_date(Date new_end_date)
 
 void Tv::set_price(int new_price)
 {
-    price = new_price;
+    if (new_price <= 0)
+    {
+        throw invalid_argument("Price has to be bigger than 0!");
+    }
+    else
+    {
+        price = new_price;
+    }
 }
 
 bool Tv::check_in_canals(string canal)
